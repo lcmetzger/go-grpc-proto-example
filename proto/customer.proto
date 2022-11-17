@@ -1,0 +1,28 @@
+syntax = "proto3";
+package pb;
+option go_package = "internal/pb";
+
+import "proto/shared/filter.proto";
+
+message FindAllCustomersRequest {
+  int32 limit = 1;
+  int32 page = 2;
+  string sort = 3;
+  string field = 4;
+  repeated filter.Filter filters = 5;
+}
+
+message CustomerResponse {
+  string id = 1; 
+  string name = 2;
+  string address = 3;
+  bool active = 4;
+}
+
+message FindAllCustomersResponse {
+  repeated CustomerResponse customers = 1;
+}
+
+service CustomerService {
+  rpc FindAllCustomers(FindAllCustomersRequest) returns (FindAllCustomersResponse) {}
+}

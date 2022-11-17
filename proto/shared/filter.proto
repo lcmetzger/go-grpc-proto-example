@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package filter;
+
+option go_package = "internal/pb";
+
+message Filter {
+  string name = 1;
+  string value = 2;
+  string type = 3;
+}
